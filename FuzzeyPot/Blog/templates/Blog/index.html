@@ -1,8 +1,10 @@
 {% if all_blog_posts %}
     <ul>
+    {% autoescape off %}
     {% for post in all_blog_posts %}
         <li><a href="{% url 'blog:detail' post.id %}">{{ post.post_text }}</a></li>
     {% endfor %}
+    {% endautoescape %}
     </ul>
 {% else %}
     <p>No posts are available.</p>
