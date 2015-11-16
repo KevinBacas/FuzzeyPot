@@ -58,3 +58,4 @@ target/
 
 # SQLite
 *.db
+*.sqlite3
