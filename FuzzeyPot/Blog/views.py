@@ -21,10 +21,10 @@ def detail(request, post_id):
     return render(request, 'Blog/detail.html', context)
 
 def new(request):
-    if request.method == 'GET':
+    new_post_text = request.GET.get('post_text', '')
+    if new_post_text == '':
         return render(request, 'Blog/new.html')
     else:
-        new_post_text = request.POST['post_text']
         new_blog_post = BlogPost(post_text=new_post_text, pub_date=timezone.now())
         new_blog_post.save()
         return HttpResponseRedirect(reverse('blog:detail', args=(new_blog_post.id,)))
